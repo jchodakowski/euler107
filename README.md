@@ -6,14 +6,28 @@ visualize my problems sometimes so there's extra code for that.
 There is also data normalization code I felt was necessary because *production* and so there
 are good and bad data sets in the commit.
 
-This code lives in the default package so can be executed as so:
+## Quick Start
+You can [download a compiled jar file from my Dropbox](https://www.dropbox.com/s/uuzad01j1jhcev9/euler_p107.jar?dl=0)
+
+To use or test this project, you can take the following steps:
 ```
-java -cp . EdgeDetector
+git clone https://github.com/jchodakowski/euler107.git
+cd euler107
+wget https://www.dropbox.com/s/uuzad01j1jhcev9/euler_p107.jar?dl=0
+java -cp euler_p107.jar EdgeDetector
 ```
 
-That pattern will require you to have the data file 'p107_network.txt' in your current path
-as well as the compiled class file. The main execution block will accept the file name/path
-as an argument, and you can test a bad-data example like so:
+The main executable assumes the data ('p107_network.txt') is in the working path. You can provide either a full path or
+a bare word as an argument to provide alternate datasources. You can test this with some included bad input data.
 ```
-java -cp . EdgeDetector p107_network_bad.txt
+java -cp euler_p107.jar EdgeDetector p107_network_bad.txt
+```
+
+## Compiling
+This project is a single class with a bare (default) package. To compile the project, take the following steps:
+```
+git clone https://github.com/jchodakowski/euler107.git
+cd euler107
+javac src/EdgeDetector.java
+java -cp src/ EdgeDetector
 ```
