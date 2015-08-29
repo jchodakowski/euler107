@@ -39,6 +39,17 @@ import java.util.ArrayList;
  */
 public class EdgeDetector {
 
+	/**
+	 * This class will run as 'main' is wont to do, and use the file name
+	 * 'p107_network.txt' within the current path by default. You can pass a
+	 * file name or full path as the argument at run time. Additional arguments
+	 * are not used, and spaces in the argument will be treated as a new
+	 * argument.
+	 * 
+	 * @param args
+	 *            use either bare, or a fully qualified path to the matrix
+	 *            resource you wish to use
+	 */
 	public static void main(String[] args) {
 		// Making sure we have the input
 		String fileName = "p107_network.txt";
@@ -66,7 +77,7 @@ public class EdgeDetector {
 		int r1 = bestPath(matrix);
 		long t2 = System.currentTimeMillis();
 		int x = totalWeight - r1;
-		System.out.println("New network cost: " + x);
+		System.out.println("New routing cost: " + x);
 		System.out.println("Total savings: " + r1);
 		System.out.println("Computation time: " + (t2 - t1) + "ms");
 	}
@@ -144,9 +155,8 @@ public class EdgeDetector {
 
 	/**
 	 * Even though the file reading method (<tt>readFile</tt>) does do some data
-	 * sanitization checks, it does not check the graph for mathematical sanity,
-	 * although that method does insure there are only numbers in the matrixes
-	 * it produces (guaranteed by the return type).
+	 * sanitization checks and then enforces the primitive <tt>int[][]</tt> for
+	 * the matrix, it does not check the graph for mathematical sanity.
 	 * 
 	 * <p>
 	 * Any additional checking added here should make sure that trapped errors
@@ -163,8 +173,7 @@ public class EdgeDetector {
 
 		for (int i = 0; i < matrix.length; i++) {
 			// should be a 45 degree line through the middle where everything is
-			// 'null'
-			// -1 in this case
+			// 'null' / -1 in this case
 			if (matrix[i][i] != -1)
 				throw new Exception("Matrix data doesn't resolve correctly ( x / y intersection not -1)");
 		}
@@ -175,7 +184,7 @@ public class EdgeDetector {
 	 * the main 'body' of the code. Anything bad that happens here will null the
 	 * return so it should get tested for on the receiving end.
 	 * 
-	 * This function also does the string->int conversion to keep 'conversion'
+	 * This function also does the string-to-int conversion to keep 'conversion'
 	 * code all in one place, and that should make 'main' nice and clean and
 	 * just the 'main' body of work (or, that's the plan anyway)
 	 * 
@@ -242,7 +251,7 @@ public class EdgeDetector {
 
 	/**
 	 * I wrote this for myself because numbers and algorithmic stuff like this
-	 * fills my mind with flying monkeys. I need to see a thing to know how to
+	 * fill my mind with flying monkeys. I need to see a thing to know how to
 	 * work it, so I put in a little extra time, just so I could "see" my data.
 	 * 
 	 * For lack of a better phrase, this is a <tt>toString</tt> method for an
